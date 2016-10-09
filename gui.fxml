@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir_5_ss16.GuiController">
+    <children>
+        <MenuButton fx:id="menuBtn" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="608.0" text="Menu">
+            <items>
+                <MenuItem id="menuRead" fx:id="menuRead" mnemonicParsing="false" onAction="#readData" text="Einlesen" />
+                <MenuItem id="menuOpen" fx:id="menuOpen" mnemonicParsing="false" onAction="#openData" text="Öffnen" />
+                <MenuItem id="menuTruth" fx:id="menuTruth" mnemonicParsing="false" onAction="#openAddTruth" text="Truth einlesen" />
+            </items>
+        </MenuButton>
+        <ListView id="listView" fx:id="listView" layoutX="285.0" layoutY="45.0" onMouseClicked="#openDoc" prefHeight="334.0" prefWidth="307.0" />
+        <TextField id="searchField" fx:id="searchField" layoutX="14.0" layoutY="356.0" onAction="#search" promptText="Suche">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <GridPane layoutX="11.0" layoutY="177.0" prefHeight="93.0" prefWidth="190.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="9.03271484375" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="9.03271484375" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precision" wrappingWidth="63.83935546875" GridPane.rowIndex="1" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recall" />
+                <Text fx:id="rValue" strokeType="OUTSIDE" strokeWidth="0.0" text="nicht bekannt" wrappingWidth="89.78759765625" GridPane.columnIndex="1" />
+                <Text fx:id="pValue" strokeType="OUTSIDE" strokeWidth="0.0" text="nicht bekannt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+        <VBox layoutX="12.0" layoutY="44.0" prefHeight="100.0" prefWidth="238.0" spacing="10.0">
+            <children>
+                <Label text="Optionen" />
+                <VBox spacing="15.0">
+                    <children>
+                        <RadioButton fx:id="rbNormal" mnemonicParsing="false" onAction="#toggleNT" selected="true" text="normaler Text" />
+                        <RadioButton fx:id="rbOhneST" mnemonicParsing="false" onAction="#toggleST" text="stoppwort. Text" />
+                        <RadioButton fx:id="rbStamm" mnemonicParsing="false" onAction="#toggleRT" text="Stammworttext" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <HBox layoutX="16.0" layoutY="324.0" spacing="10.0">
+            <children>
+                <RadioButton fx:id="and" layoutX="170.0" layoutY="268.0" mnemonicParsing="false" onAction="#toggleAnd" selected="true" text="UND" />
+                <RadioButton fx:id="or" layoutX="170.0" layoutY="296.0" mnemonicParsing="false" onAction="#toggleOr" text="ODER" />
+                <RadioButton fx:id="neg" layoutX="170.0" layoutY="324.0" mnemonicParsing="false" onAction="#toggleNeg" text="WEDER NOCH" />
+            </children>
+        </HBox>
+        <Label layoutX="14.0" layoutY="302.0" text="Verknüpfung" />
+        <SplitMenuButton fx:id="searchBtn" layoutX="191.0" layoutY="356.0" mnemonicParsing="false" onAction="#search" text="Suche">
+            <items>
+                <RadioMenuItem fx:id="rmiLin" mnemonicParsing="false" onAction="#toggleLinSearch" selected="true" text="Bool" />
+                <RadioMenuItem fx:id="rmiVek" mnemonicParsing="false" onAction="#toggleVekSearch" text="Vektor" />
+            </items>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </SplitMenuButton>
+        <VBox layoutX="169.0" layoutY="69.0" spacing="15.0">
+            <children>
+                <RadioButton fx:id="rbNormalI" layoutY="90.0" onAction="#toggleIN" selected="true" text="Normal" />
+                <RadioButton fx:id="rbSigI" layoutY="121.0" onAction="#toggleIS" text="Signatur" />
+                <RadioButton fx:id="rbInvListI" layoutY="149.0" onAction="#toggleII" text="invert. Liste" />
+            </children>
+        </VBox>
+        <Label fx:id="searchTime" AnchorPane.bottomAnchor="8" AnchorPane.rightAnchor="25"/>
+    </children>
+</AnchorPane>
